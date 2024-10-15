@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Post } from "@/types";
-import { ref } from "vue";
 
 const props = defineProps<{
     visible: boolean
@@ -18,11 +17,11 @@ const emit = defineEmits<{
             <!-- <Button label="Show" @click="props.visible = true" /> -->
             <Dialog v-model:visible="props.visible" :draggable="false" :closable="false" modal header="Edit Profile"
                 :style="{ width: '510px' }">
-
                 <template #header>
                     <div class="flex items-center justify-between w-full">
                         <div class="inline-flex items-center gap-2">
-                            <Avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
+                            <Avatar
+                                :image="props.post?.user?.profile_pic || 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png'"
                                 shape="circle" />
                             <span class="font-bold whitespace-nowrap">{{ props.post?.user?.username }}</span>
                         </div>

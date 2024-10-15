@@ -56,7 +56,8 @@ onMounted(() => {
             <Toolbar>
                 <template #start>
                     <div class="flex items-center gap-2">
-                        <Image src="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
+                        <Image
+                            :src="thisUser?.profile_pic || 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png'"
                             style="width: 35px; height: 35px" preview />
                         <span class="text-xl font-bold">{{ thisUser?.username || '' }}</span>
                     </div>
