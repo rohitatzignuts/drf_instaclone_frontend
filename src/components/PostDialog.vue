@@ -32,7 +32,9 @@ const emit = defineEmits<{
 
                 <Image :src="props.post?.image" alt="Image"
                     class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto object-cover" />
-                <p class="font-medium pt-2">{{ props.post?.caption }}</p>
+                <p class="font-medium py-2">{{ props.post?.caption }}</p>
+                <p><span class="font-medium">{{ props.post?.likes }}</span> {{ props.post?.likes > 1 ? 'Likes' :
+                    'Like' }}</p>
             </Dialog>
         </div>
     </div>

@@ -1,5 +1,5 @@
 export interface User {
-    id?: string | number
+    id?: number
     username: string,
     password?: string,
     email?: string,
@@ -8,9 +8,19 @@ export interface User {
     profile_pic?: any
 }
 
+export interface Comment {
+    id?: number
+    content: string,
+    created_at?: string,
+    post?: number,
+    user?: User,
+}
+
 export interface Post {
-    id?: string | number
+    id?: number
     user?: User
     image: any,
     caption: string,
+    likes: Array<number>
+    comments: Array<Comment>
 }

@@ -25,10 +25,6 @@ const items = ref([
                 icon: 'pi pi-user-edit',
                 command: () => isEditProfileDialog.value = true
             },
-            {
-                label: 'Export',
-                icon: 'pi pi-upload'
-            }
         ]
     }
 ]);
