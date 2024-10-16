@@ -4,7 +4,8 @@ import router from "@/router";
 import { useConfirm } from "primevue/useconfirm";
 import { useUserStore } from "@/store/useUserStore";
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import EditProfileDialog from "./EditProfileDialog.vue";
 
 // Composables and Stores
 const confirm = useConfirm();
@@ -12,7 +13,31 @@ const userStore = useUserStore()
 const { getUserDetails } = userStore
 const { thisUser } = storeToRefs(userStore)
 
+// Reactive Data
+const isEditProfileDialog = ref(false)
+const menu = ref();
+const items = ref([
+    {
+        label: 'Menu',
+        items: [
+            {
+                label: 'Edit Profile',
+                icon: 'pi pi-user-edit',
+                command: () => isEditProfileDialog.value = true
+            },
+            {
+                label: 'Export',
+                icon: 'pi pi-upload'
+            }
+        ]
+    }
+]);
+
 // Methods
+const toggle = (event: any) => {
+    menu.value.toggle(event);
+};
+
 const confirmLogout = () => {
     confirm.require({
         group: 'headless',
@@ -56,9 +81,9 @@ onMounted(() => {
             <Toolbar>
                 <template #start>
                     <div class="flex items-center gap-2">
-                        <Image
-                            :src="thisUser?.profile_pic || 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png'"
-                            style="width: 35px; height: 35px" preview />
+                        <Avatar
+                            :image="thisUser?.profile_pic || 'https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0='"
+                            shape="circle" size="large" />
                         <span class="text-xl font-bold">{{ thisUser?.username || '' }}</span>
                     </div>
                 </template>
@@ -67,10 +92,15 @@ onMounted(() => {
                     <div class="flex items-center gap-2">
                         <Button label="Logout" icon="pi pi-sign-out" text plain @click="confirmLogout()" />
                     </div>
-
+                    <div class="card flex justify-center">
+                        <Button type="button" icon="pi pi-ellipsis-v" text plain @click="toggle" aria-haspopup="true"
+                            aria-controls="overlay_menu" />
+                        <Menu ref="menu" id="overlay_menu" :model="items" :popup="true" />
+                    </div>
                 </template>
             </Toolbar>
         </div>
+        <EditProfileDialog :visible="isEditProfileDialog" :user="thisUser"
+            @close-dialog="isEditProfileDialog = false" />
     </div>
-
 </template>

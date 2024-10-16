@@ -8,29 +8,27 @@ const props = defineProps<{
 
 <template>
     <div>
-        <Card style="overflow: hidden">
+        <Card style="overflow: hidden" class="my-4">
             <template #header>
-                <img alt="user header"
-                    src="https://d3cm515ijfiu6w.cloudfront.net/wp-content/uploads/2024/02/27105809/fernando-alonso.jpg"
-                    width="100%" height="550px" class="object-contain" />
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <Avatar
+                        :image="props.post?.user?.profile_pic || 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png'"
+                        shape="circle" />
+                    <span class="font-bold whitespace-nowrap">{{ props.post?.user?.username }}</span>
+                </div>
+                <Image alt="user header" :src="props.post?.image" preview width="100%" height="550px"
+                    class="object-contain" />
             </template>
-            <template #title>Advanced Card</template>
-            <template #subtitle>Card subtitle</template>
-            <template #content>
-                <p class="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error
-                    repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam
-                    perferendis esse, cupiditate neque
-                    quas!
-                </p>
-            </template>
+            <template #subtitle>{{ props.post?.caption }}</template>
             <template #footer>
                 <div class="flex gap-4 mt-1">
-                    <Button label="Cancel" severity="secondary" outlined class="w-full" />
-                    <Button label="Save" class="w-full" />
+                    <Button label="Like" severity="secondary" outlined class="w-full" icon="pi pi-heart" />
+                    <Button label="Comment" class="w-full" icon="pi pi-comment" />
                 </div>
             </template>
         </Card>
+        <Divider />
+
     </div>
 </template>
 

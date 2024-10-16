@@ -17,6 +17,7 @@ declare module 'vue' {
     ConfirmDialog: typeof import('primevue/confirmdialog')['default']
     Dialog: typeof import('primevue/dialog')['default']
     Divider: typeof import('primevue/divider')['default']
+    EditProfileDialog: typeof import('./src/components/EditProfileDialog.vue')['default']
     FileUpload: typeof import('primevue/fileupload')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     HomeTab: typeof import('./src/components/HomeTab.vue')['default']
@@ -32,6 +33,7 @@ declare module 'vue' {
     InputIcon: typeof import('primevue/inputicon')['default']
     InputNumber: typeof import('primevue/inputnumber')['default']
     InputText: typeof import('primevue/inputtext')['default']
+    Menu: typeof import('primevue/menu')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
     PostCard: typeof import('./src/components/post/PostCard.vue')['default']
     PostDialog: typeof import('./src/components/PostDialog.vue')['default']
@@ -47,6 +49,7 @@ declare module 'vue' {
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     Toast: typeof import('primevue/toast')['default']
     Toolbar: typeof import('primevue/toolbar')['default']
+    VirtualScroller: typeof import('primevue/virtualscroller')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
   export interface ComponentCustomProperties {

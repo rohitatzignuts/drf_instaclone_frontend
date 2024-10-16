@@ -75,7 +75,7 @@ const clearValues = () => {
 <template>
     <div>
         <Toast />
-        <main class="flex items-center justify-center h-screen">
+        <main class="flex flex-col items-center justify-center min-h-screen">
             <div class="card flex justify-center">
                 <form v-focustrap class="w-full sm:w-80 flex flex-col gap-4" @submit.prevent="handleUserRegistration">
                     <div class="text-center">
@@ -120,6 +120,8 @@ const clearValues = () => {
                     <Button type="submit" label="Register" severity="Primary" />
                 </form>
             </div>
+            <p class="mt-4">Already Have an account ? <router-link to="/login"><span class="underline font-medium">Try
+                        Logging In</span></router-link></p>
         </main>
     </div>
 </template>

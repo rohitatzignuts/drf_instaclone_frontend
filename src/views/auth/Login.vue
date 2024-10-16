@@ -72,7 +72,7 @@ const clearValues = () => {
 <template>
     <div>
         <Toast />
-        <main class="flex items-center justify-center h-screen">
+        <main class="flex flex-col items-center justify-center min-h-screen">
             <div class="card flex justify-center">
                 <form v-focustrap class="w-full sm:w-80 flex flex-col gap-4" @submit.prevent="handleUserLogin">
                     <div class="text-center">
@@ -92,10 +92,11 @@ const clearValues = () => {
                         <InputText id="password" v-model="user.password" type="password" placeholder="Password"
                             autofocus fluid required />
                     </IconField>
-
                     <Button type="submit" label="Login" severity="Primary" />
                 </form>
             </div>
+            <p class="mt-4">Don't have an account ? <router-link to="/register"><span
+                        class="underline font-medium">Register</span></router-link></p>
         </main>
     </div>
 </template>

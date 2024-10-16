@@ -16,7 +16,9 @@ onMounted(() => {
 
 <template>
     <div>
-        <PostCard /> {{ timeLinePosts }}
+        <ul v-for="post in timeLinePosts">
+            <PostCard :post="post" />
+        </ul>
     </div>
 </template>
 

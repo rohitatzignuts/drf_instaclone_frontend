@@ -8,7 +8,7 @@ import { usePostStore } from '@/store/usePostStore';
 
 // Stores
 const postStore = usePostStore()
-const { getPosts } = postStore
+const { getPosts, getTimeLinePosts } = postStore
 // Constants
 const toast = useToast()
 
@@ -42,6 +42,7 @@ const handlePostCreate = async () => {
                 life: 3000,
             });
             getPosts()
+            getTimeLinePosts()
         }
     } catch (error) {
         if (axios.isAxiosError(error) && error.response) {
