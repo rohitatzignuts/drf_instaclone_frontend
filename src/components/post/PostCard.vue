@@ -15,7 +15,7 @@ const props = defineProps<{
 const postStore = usePostStore()
 const userStore = useUserStore()
 const { thisUser } = storeToRefs(userStore)
-const { getTimeLinePosts } = postStore
+const { getTimeLinePosts, getPosts } = postStore
 
 // Reactive Data
 const isCommentsDialog = ref(false)
@@ -24,6 +24,7 @@ const toggleLike = async (postId: number | undefined) => {
         const response = await axiosInstance.post(`posts/${postId}/like/`);
         if (response) {
             getTimeLinePosts()
+            getPosts()
         }
     } catch (error) {
         console.error("Error liking the post:", error);

@@ -82,7 +82,12 @@ const addComment = async () => {
                     </div>
                 </template>
                 <p class="font-medium pb-4">Comments</p>
-                <div>
+                <div v-if="!props.post?.comments?.length">
+                    <p class="text-muted-color-emphasis">
+                        there are no comments.. u are lame !!
+                    </p>
+                </div>
+                <div v-else>
                     <VirtualScroller :items="props.post?.comments" :itemSize="props.post?.comments?.length"
                         class="border border-surface-200 dark:border-surface-700 rounded" style="height: 300px">
                         <template v-slot:item="{ item, options }">
@@ -92,13 +97,6 @@ const addComment = async () => {
                             </div>
                         </template>
                     </VirtualScroller>
-
-                    <!-- <ul v-for="comment in props.post?.comments">
-                        <div class="flex gap-2 items-center my-2">
-                            <Avatar :image="comment?.user?.profile_pic" shape="circle" />
-                            <span class="text-muted-color-emphasis">{{ comment?.content }}</span>
-                        </div>
-                    </ul> -->
                 </div>
             </Dialog>
         </div>

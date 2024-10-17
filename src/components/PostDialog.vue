@@ -33,8 +33,20 @@ const emit = defineEmits<{
                 <Image :src="props.post?.image" alt="Image"
                     class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto object-cover" />
                 <p class="font-medium py-2">{{ props.post?.caption }}</p>
-                <p><span class="font-medium">{{ props.post?.likes }}</span> {{ props.post?.likes > 1 ? 'Likes' :
+                <p><span class="font-medium">{{ props.post?.likes?.length }}</span> {{ props.post?.likes > 1 ? 'Likes' :
                     'Like' }}</p>
+
+                <div v-if="props.post?.comments?.length">
+                    <VirtualScroller :items="props.post?.comments" :itemSize="props.post?.comments?.length"
+                        class="border border-surface-200 dark:border-surface-700 rounded" style="height: 250px">
+                        <template v-slot:item="{ item, options }">
+                            <div class="flex gap-2 items-center my-2 px-2 cursor-pointer">
+                                <Avatar :image="item?.user?.profile_pic" shape="circle" />
+                                <span class="text-muted-color-emphasis">{{ item?.content }}</span>
+                            </div>
+                        </template>
+                    </VirtualScroller>
+                </div>
             </Dialog>
         </div>
     </div>

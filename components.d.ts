@@ -20,6 +20,7 @@ declare module 'vue' {
     Divider: typeof import('primevue/divider')['default']
     EditProfileDialog: typeof import('./src/components/EditProfileDialog.vue')['default']
     FileUpload: typeof import('primevue/fileupload')['default']
+    FloatLabel: typeof import('primevue/floatlabel')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     HomeTab: typeof import('./src/components/HomeTab.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']

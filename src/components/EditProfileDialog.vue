@@ -127,7 +127,7 @@ watch(() => props.visible, (newVal) => {
 
 
                 <form v-focustrap class="w-full  flex flex-col gap-4">
-                    <IconField>
+                    <IconField variant="on">
                         <InputIcon>
                             <i class="pi pi-user" />
                         </InputIcon>
